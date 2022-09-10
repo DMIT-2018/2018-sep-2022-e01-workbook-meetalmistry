@@ -49,3 +49,9 @@ Tracks
 .OrderBy(x => x.Album.Title)
 .ThenBy(x => x.Name)
 
+//order of sorting and filtering can be interchanged
+Tracks
+.OrderBy(x => x.Album.Title)
+.ThenBy(x => x.Name)
+.Where(x => x.Album.Artist.Name.Contains("Queen"))
+
