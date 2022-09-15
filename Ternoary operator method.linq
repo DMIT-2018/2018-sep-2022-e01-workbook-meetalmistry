@@ -2,7 +2,6 @@
   <Connection>
     <ID>10398237-b90a-42ab-92b0-8354a2c46fb3</ID>
     <NamingServiceVersion>2</NamingServiceVersion>
-    <Persist>true</Persist>
     <Server>WB320-12\SQLEXPRESS</Server>
     <AllowDateOnlyTimeOnly>true</AllowDateOnlyTimeOnly>
     <Database>Chinook</Database>
@@ -28,6 +27,7 @@
 //		:Artist.Name
 
 //coding and testing
+
 
 Albums
 	//.OrderBy(x => x.ReleaseLabel)
