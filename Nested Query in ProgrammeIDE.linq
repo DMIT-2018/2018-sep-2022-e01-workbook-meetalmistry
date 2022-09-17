@@ -70,7 +70,27 @@ var results  = Employees
 				}
 				);
 				results.Dump();
+				
+				
+				
+				
+//List All Albums that are from 1990.(thats where we will start)
+//Display the Album Title and artist name
+//foreach Album, display its Tracks (Track(plural, collections) is a children on Albums 
 
+var albumtracks = Albums 
+					.Where (x => x.ReleaseYear == 1990)
+					//select is for display table
+					.Select (x => new {
+							Title = x.Title,
+							Artist = x.Artist.Name,
+							Tracks = x.Tracks
+										.Select (y => new {
+											Song = y.Name,
+											Genre = y.Genre.Name										
+										})										
+					})	
+			.Dump();
 	
 }
 
