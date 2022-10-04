@@ -141,11 +141,14 @@ var q5onequery = Employees
 var q6 = Schedules
 			.Where (x => x.Day.Month == 3)
 			.ToList()// got data into memory
-			.GroupBy(x => x.Employee.FirstName + "" + x.Employee.LastName), 
-			.ThenBy( x => x.EmployeeID )// group on the firstname
+			.GroupBy(x => x.Employee)
+			// group on the firstname
 			.Select(x => new 
 				{
-				  Name = x.Key
+				  Name = x.Key.FirstName + " " + x.Key.LastName,
+				  RegularEarnings = x.Where(y => !y.OverTime).Sum(y => y.HourlyWage * (y.Shift.EndTime - y.Shift.StartTime).Hours).ToString("0.00"),  //record is not an ovetime record i want to sum m
+				  OverTimeEarnings = x.Where(y => y.OverTime).Sum(y => y.HourlyWage * (y.Shift.EndTime - y.Shift.StartTime).Hours * 1.5m).ToString("0.00"),
+				  NumberOfShifts = x.Count()
 				});
 			
 	q6.Dump();
