@@ -46,6 +46,17 @@ void Main()
   //756 Child in Time
   
   //on the web page the post method would have already access to the NindProperty variables containing the input values.
+  
+  //on the web page, the post method would have already have access to the
+		//  BindProperty variables containing the input values
+		//playlistname = "hansenbtest";
+		//int trackid = 756;
+
+		//call the service method to process the data
+		//PlaylistTrack_AddTrack(playlistname, username, trackid); //tested
+		
+		//on the web page, the post method would have already have access to the
+		//	BindProperty variables containing the input values
   playlistname = "hansenbtest";
   int trackid = 793;
   
