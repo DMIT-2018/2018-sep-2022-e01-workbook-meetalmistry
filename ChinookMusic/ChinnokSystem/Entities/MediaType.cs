@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ChinnokSystem.Entities
 {
-    public partial class MediaType
+    internal partial class MediaType
     {
         public MediaType()
         {
