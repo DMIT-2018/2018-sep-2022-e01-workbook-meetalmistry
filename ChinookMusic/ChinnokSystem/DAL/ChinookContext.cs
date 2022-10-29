@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using ChinookSystem.Entities;
+using ChinnokSystem.Entities;
 
 namespace ChinnokSystem.DAL
 {
-    public partial class ChinookContext : DbContext
+    internal  partial class ChinookContext : DbContext
     {
         public ChinookContext()
         {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ChinnokSystem.Entities
 {
-    public partial class Genre
+    internal partial class Genre
     {
         public Genre()
         {

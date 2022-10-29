@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ChinnokSystem.Entities
 {
-    public partial class Album
+    internal  partial class Album
     {
         public Album()
         {

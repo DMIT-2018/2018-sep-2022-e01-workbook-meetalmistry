@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ChinnokSystem.Entities
 {
-    public partial class Invoice
+    internal partial class Invoice
     {
         public Invoice()
         {
