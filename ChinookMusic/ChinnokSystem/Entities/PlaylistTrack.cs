@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ChinnokSystem.Entities
 {
-    public partial class PlaylistTrack
+    internal partial class PlaylistTrack
     {
         public int PlaylistId { get; set; }
         public int TrackId { get; set; }

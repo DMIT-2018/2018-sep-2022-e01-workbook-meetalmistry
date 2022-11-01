@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ChinnokSystem.Entities
 {
-    public partial class WorkingVersion
+    internal partial class WorkingVersion
     {
         public int VersionId { get; set; }
         public int Major { get; set; }
