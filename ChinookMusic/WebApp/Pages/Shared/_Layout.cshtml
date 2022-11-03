@@ -4,20 +4,51 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
+
+
     @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/holiday.css@0.9.8" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/WebApp.styles.css" asp-append-version="true" />
     @* need jquery linq  hgkedgj*@
 </head>
 <body>
     <header>
-        <nav>          
+        <nav>         
                
                     <ul>
                         <li >
-                            <a  asp-area="" asp-page="/Index">Home</a>
+                            <a  asp-area="" asp-page="/Index">Home
+                            <img src="~/img/ChinookMusicMenuLogo.jpg"
+                            alt="Menu Logo image"
+                            ttile="Go to Home" >
+                    </a>
                         </li>
-                        <li c>
+                        <li>
+                           <a asp-area="" asp-page="/Index">Home</a>
+                      </li>
+
+                      @*
+                          setup a submenu (dropdown menu) using holiday.css
+                          see holidayss.js.org
+
+                          start with li tag
+                          within : add a span tag: entry on the menu root
+                                    add ul tag: statrts thr drop down menu
+                                    within: add any number of li menu
+                                                items
+
+                      *@
+                      <li>
+                          <span>Sample</span>
+                          <ul>
+                              <li><a asp-area="" asp-page="/SamplePages/Index">Default Sample Pages Home</a></li>
+                          </ul>
+                      </li>
+
+
+                        <li >
                             <a asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
                     <partial name="_LoginPartial" />
