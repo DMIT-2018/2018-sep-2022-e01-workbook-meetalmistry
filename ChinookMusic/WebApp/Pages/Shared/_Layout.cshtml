@@ -7,11 +7,13 @@
 
 
     @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
-
+    @* holiday CSS*@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/holiday.css@0.9.8" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/WebApp.styles.css" asp-append-version="true" />
-    @* need jquery linq  hgkedgj*@
+
+    @RenderSection("CustomCSS", required: false)
+   
 </head>
 <body>
     <header>
@@ -19,7 +21,7 @@
                
                     <ul>
                         <li >
-                            <a  asp-area="" asp-page="/Index">Home
+                            <a  asp-area="" asp-page="/Index">
                             <img src="~/img/ChinookMusicMenuLogo.jpg"
                             alt="Menu Logo image"
                             ttile="Go to Home" >
@@ -44,6 +46,7 @@
                           <span>Sample</span>
                           <ul>
                               <li><a asp-area="" asp-page="/SamplePages/Index">Default Sample Pages Home</a></li>
+                              <li><a asp-area="" asp-page="/SamplePages/Controls">Sample Form Controls</a></li>
                           </ul>
                       </li>
 
