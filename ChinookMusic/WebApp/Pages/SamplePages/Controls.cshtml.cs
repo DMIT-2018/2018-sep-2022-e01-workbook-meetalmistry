@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 #region Additional Namespace
-using ChinookSystem.ViewModels;
+using ChinnokSystem.ViewModels;
 #endregion
 
 namespace WebApp.Pages.SamplePages

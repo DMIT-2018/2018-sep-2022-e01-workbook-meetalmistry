@@ -25,7 +25,7 @@ namespace ChinnokSystem.BLL
         #endregion
 
         #region Queries
-        public List<TrackSelection> Track_FetchTracksBy(string searcharg, string searchby)
+        public List<TrackSelection> Track_FetchTracksBy(string searcharg, string searchby, int pagenumber,int  pagesize, out int totalcount)
         {
             if (string.IsNullOrWhiteSpace(searcharg))
             {
@@ -48,8 +48,13 @@ namespace ChinnokSystem.BLL
                                             ArtistName = x.Album.Artist.Name,
                                             Milliseconds = x.Milliseconds,
                                             Price = x.UnitPrice
-                                        });
-            return results.ToList();
+                                        })
+                                        .OrderBy(x => x.SongName);
+            totalcount = results.Count();
+            int rowsskippied = (pagenumber - 1) * pagesize;
+
+
+            return results.Skip(rowsskippied).Take(pagesize).ToList();
         }
         #endregion
     }
