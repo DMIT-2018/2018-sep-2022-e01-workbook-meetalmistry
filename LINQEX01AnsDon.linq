@@ -1,13 +1,4 @@
-<Query Kind="Statements">
-  <Connection>
-    <ID>e69b3623-7543-4e6e-a932-1ba4f3208a62</ID>
-    <NamingServiceVersion>2</NamingServiceVersion>
-    <Persist>true</Persist>
-    <Server>WC320-03\SQLEXPRESS</Server>
-    <AllowDateOnlyTimeOnly>true</AllowDateOnlyTimeOnly>
-    <Database>WorkSchedule</Database>
-  </Connection>
-</Query>
+<Query Kind="Statements" />
 
 //01)List all the skills for which we do not have any qualfied employees.
 //if skill has any children that is in employee skill table
