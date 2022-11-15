@@ -56,7 +56,7 @@ namespace ChinnokSystem.BLL
 
         //put "_context" in front of dataset and make all instanse singular
 
-        void PlaylistTrack_AddTrack(string playlistname, string username, int trackid)
+       public void PlaylistTrack_AddTrack(string playlistname, string username, int trackid)
         {
             //locals
             Track trackexists = null;

@@ -175,8 +175,14 @@ namespace WebApp.Pages.SamplePages
                 {
                     throw new Exception("You need to have a playlist select first. Enter a playlist name and Fetch");
                 }
-               
+
                 // Add the code to add a track via the service.
+                //the data needed for your call has ALREADY been placed in your local property by the use of [BindProperty] which is two way output/input)
+                //once security is install, you would be able to obtain the user name from the operating system.
+                //we dont have set up for security yeet so we will use const for username for testing
+                string username = USERNAME;
+                //call your service sending in the expected data
+                _playlisttrackServices.PlaylistTrack_AddTrack(playlistname, username, addtrackid);
                 
                 FeedBackMessage = "adding the track";
                 return RedirectToPage(new
