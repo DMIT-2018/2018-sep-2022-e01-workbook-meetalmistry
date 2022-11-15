@@ -2,9 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 #region Additional 
-using ChinookSystem.ViewModels;
+using ChinnokSystem.ViewModels;
 using WebApp.Helpers;
-using ChinookSystem.BLL;
+using ChinnokSystem.BLL;
 #endregion
 
 
@@ -19,10 +19,10 @@ namespace WebApp.Pages.SamplePages
 
 
         public PlaylistManagementModel(TrackServices trackservices,
-                                PlaylistTrackServices _playlisttrackservices)
+                                PlaylistTrackServices playlisttrackservices)
         {
             _trackServices = trackservices;
-            _playlisttrackServices = _playlisttrackservices;
+            _playlisttrackServices = playlisttrackservices;
         }
         #endregion
 
@@ -60,12 +60,15 @@ namespace WebApp.Pages.SamplePages
         [BindProperty(SupportsGet = true)]
         public string playlistname { get; set; }
 
-        public List<TrackSelection> trackInfo { get; set; }
+        public List<TrackSelection> trackInfo { get; set; } //do not need bind prop nothing is cmming out just a display.
 
         public List<PlaylistTrackTRX> qplaylistInfo { get; set; }
 
-        [BindProperty]
-        public List<PlaylistMove> cplaylistInfo { get; set; }
+
+        //this prop willl be tied to the input fields of the web page
+        //in this case this list tied to the table data elements for the playlist
+       // [BindProperty]
+        //public List<PlaylistMove> cplaylistInfo { get; set; }
 
         [BindProperty]
         public int addtrackid { get; set; }
@@ -73,6 +76,7 @@ namespace WebApp.Pages.SamplePages
         public const string USERNAME = "HansenB";
         public void OnGet()
         {
+            //this method is executed every time the page is called for the first time or whenever a Get request is made to the page SUCH AS RedirectTopage()
             GetTrackInfo();
             GetPlaylist();
         }
@@ -85,7 +89,7 @@ namespace WebApp.Pages.SamplePages
                 int totalcount = 0;
                 int pagenumber = currentpage.HasValue ? currentpage.Value : 1;
                 PageState current = new(pagenumber, PAGE_SIZE);
-                trackInfo = _trackServices.Track_Fetch_TracksBy(searchArg.Trim(),
+                trackInfo = _trackServices.Track_FetchTracksBy(searchArg.Trim(),
                     searchBy.Trim(), pagenumber, PAGE_SIZE, out totalcount);
                 Pager = new(totalcount, current);
             }
@@ -115,6 +119,7 @@ namespace WebApp.Pages.SamplePages
                 {
                     throw new AggregateException(Errors);
                 }
+                //RedirectToPage() willl cause an Get request to be issue (OnGet())
                 return RedirectToPage(new
                 {
                     searchBy = searchBy.Trim(),
