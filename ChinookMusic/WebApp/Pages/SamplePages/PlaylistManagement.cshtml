@@ -178,7 +178,67 @@
                         </thead>
 
                         <tbody>
-                           @* code to demo CQRS for a table display*@
+                           @* code to demo CQRS for a table display
+
+                           a) create an incoming control (hidden) that will act as an "unique index identifier" for each instance that will be created.
+
+                           <input type="hidden" name="commandmodelpropertyname.Index"
+                           value="@intanceitem.uniqeidentityproperty">
+
+
+                              <input type="hidden" name="cplaylistinfo.Index"
+                               value="@item.TrackId">
+
+                        b) for the display of the table
+                            on each property of the row instance, use the value of your unque index identifier as an "[index]"attaceh to the name of the field
+
+
+                              <input type="hidden" name="cplaylistinfo.[@item.TrackId].propertyname"
+                               value="@item.TrackId">
+
+
+                        All incoming data that belongs to the same"[ind]" will be collected into the same instance roa and placed into your command model List<T>
+
+                        NOTE: using this technique of name/value pair REPLACES the asp-for parameter
+
+                        List of command model display right side of the form
+                           *@
+                           @foreach(var item in Model.qplaylistInfo)
+                           {
+                               <tr>
+                                   <td>
+                                        <input type="hidden" name="cplaylistinfo.Index"
+                                                value="@item.TrackId">
+
+                                   <input type="hidden"
+                                       name="cplaylistinfo[@item.TrackId].TrackId"
+                                       value="@item.TrackId">
+
+                                       <input type="checkbox" 
+                                           name="cplaylistinfo[@item.TrackId].SelectedTrack"
+                                           value="true">                                          
+
+                                   </td>
+                                   <td>
+
+                                        <input type="hidden"
+                                   name="cplaylistinfo[@item.TrackId].TrackNumber"
+                                   value="@item.TrackNumber">
+                                   @item.TrackNumber
+
+                                   </td>
+                                   <td>
+                                       @item.SongName
+                                   </td>
+                                   <td>
+                                       @TimeSpan.FromMilliseconds(item.Millseconds).ToString(@"mm\:ss")
+
+                                   </td>
+                                   <input type="text"
+                                       name="cplaylistinfo[@item.TrackId].TrackInput">
+
+                               </tr>
+                           }
                         </tbody>
                     </table>
                 }
