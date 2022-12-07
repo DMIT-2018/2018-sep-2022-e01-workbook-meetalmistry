@@ -1,0 +1,112 @@
+﻿@page
+@model Inclass04Sample.Pages.GameStatModel
+@{
+    ViewData["Title"] = "Game Stats page";
+}
+
+<div class="mt-4 p-5 bg-primary text-white rounded">
+    <h1 class="display-4">Record Game Players Stats</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div class="container">
+<div class="row">
+    <div class="col">
+        <h1 class="display-4">League Games</h1> 
+        <table class="arrowes-table table-striped">
+        <thead>
+            <tr>
+                <th>Game Date</th>
+                <th>Home Team Name</th>
+                <th>Visiting Team Name</th>
+                <th>Views</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.LoadGames)
+            {   <tr>            
+                <td>@item.GameDate</td>
+                <td>@item.HomeTeamName</td>
+                <td>@item.VisitingTeamName</td>
+                <td><form method="post">
+                                        <input type="hidden" value="@item.GameID"
+                                            asp-for="GameId">
+                                        <button type="submit" title="View"
+                                            asp-page-handler="Fetch">View</button>
+                                    </form>
+                </td>
+                </tr>      
+            }
+        </tbody>
+        </table>
+    </div>
+    @if(Model.HomeTeamPlayers != null && Model.VisitingTeamPlayers != null){
+    <form method="post" id="gameStat">
+    <div class="col">
+    <div class="col">
+        <h1 class="display-4">Home Team</h1>
+        <table class="arrowes-table table-striped">
+        <thead>
+            <tr>
+                <th>Player</th>
+                <th>Goals</th>
+                <th>Assits</th>
+                <th>Yellow</th>
+                <th>Red</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.HomeTeamPlayers)
+            {   
+              <tr>            
+                <td>
+                    <input type="hidden" name="HomeTeamPlayers.Index" value="@item.PlayerID">
+                    <input type="hidden" name="HomeTeamPlayers[@item.PlayerID].PlayerID" value="@item.PlayerID">@item.FullName</td>
+                <td><input type="text" name="HomeTeamPlayers[@item.PlayerID].Goal"></td>
+                <td><input type="text" name="HomeTeamPlayers[@item.PlayerID].Assist"></td>
+                <td><input type="checkbox" name="HomeTeamPlayers[@item.PlayerID].RedCard" value=true></td>
+                <td><input type="checkbox" name="HomeTeamPlayers[@item.PlayerID].YellowCard" value=true></td>
+              </tr>
+            }
+        </tbody>
+        </table>
+    </div>
+    <div class="col">
+        <h1 class="display-4">Visiting Team</h1> 
+        <table class="arrowes-table table-striped">
+        <thead>
+            <tr>
+                <th>Player</th>
+                <th>Goals</th>
+                <th>Assits</th>
+                <th>Yellow</th>
+                <th>Red</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.VisitingTeamPlayers)
+            {   
+              <tr>            
+                <td>
+                    <input type="hidden" name="VisitingTeamPlayers.Index" value="@item.PlayerID">
+                    <input type="hidden" name="VisitingTeamPlayers[@item.PlayerID].PlayerID" value="@item.PlayerID">@item.FullName</td>
+                <td><input type="text" name="VisitingTeamPlayers[@item.PlayerID].Goal"></td>
+                <td><input type="text" name="VisitingTeamPlayers[@item.PlayerID].Assist" ></td>
+                <td><input type="checkbox" name="VisitingTeamPlayers[@item.PlayerID].RedCard" value=true></td>
+                <td><input type="checkbox" name="VisitingTeamPlayers[@item.PlayerID].YellowCard" value=true></td>
+              </tr>
+            }
+        </tbody>
+        </table>
+    </div>
+    </div>
+    <div>
+        <button type="submit" value="recordgamestats" id="RecordButton"
+                name="RecordButton" asp-page-handler="AddRecord">Record Game Stats</button>
+            <button type="reset" value="listslider" id="theListSliderButton"
+                name="ResetButton" asp-page-handler="Clear">Clear</button>
+    </div>
+    </form>
+    }
+</div>
+</div>
